@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "7241:7241"
+    environment:
+      - DATABASE_URL=mysql://group2project:JustD2OfUs@localhost/kitchenware_store
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:3001
