@@ -66,38 +66,9 @@ To get a local copy of the application up and running, follow these steps:
    ```bash
    cd ../backend
    npm install
+
 ## Usage
-
-#### Navigate to the Project Directory
-
-Change to the project directory:
-
-```bash
-cd simple-ecommerce-app
-```
-### Install Dependencies
-
-### For the Frontend:
-Navigate to the frontend directory and install the dependencies:
-
-```bash
-cd frontend
-npm install
-```
-
-### For the Backend:
-Navigate to the backend directory and install the dependencies:
-
-```bash
-cd ../backend
-npm install
-```
-
-### Set Up the MySQL Database
-
-- Create a MySQL database named `kitchenware_store`.
-- Add the necessary tables and seed the database with initial product data. Refer to the provided SQL scripts or manually insert data using a MySQL client.
-## Start the Backend Server
+### Start the Backend Server
 
 From the backend directory, run:
 
