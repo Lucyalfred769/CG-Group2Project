@@ -1,52 +1,27 @@
 # Simple E-Commerce App
 
-This application is designed to provide a user-friendly interface for browsing kitchenware products. Users can view product details, and it serves as a great example of a full-stack application using React for the frontend and Node.js with MySQL for the backend.
+This is a simple kitchenware store application built with a Node.js backend and a React frontend. The backend serves product data (currently stored as an in-memory array) and handles API requests, while the frontend displays the products and allows users to add them to a shopping cart.
 
-## Table of Contents
+## Project Structure
 
-1. [Features](#features)
-2. [Technologies Used](#technologies-used)
-3. [Getting Started](#getting-started)
-4. [Installation](#installation)
-5. [Usage](#usage)
-6. [Contributing](#contributing)
+- **Backend (Node.js)**: Provides product data and API endpoints.
+- **Frontend (React)**: Displays kitchenware products and allows users to add them to a shopping cart.
+- **Docker**: The application is containerized using Docker for easy setup and deployment.
 
-## Features
+## Prerequisites
 
-- **User-Friendly Interface**: Easily navigate through a list of kitchenware products.
-- **Product Display**: Each product includes an image, name, and price.
-- **Responsive Design**: The application is responsive and works on various devices.
-- **Backend API**: A RESTful API built with Node.js for fetching product data from a MySQL database.
+Make sure you have the following installed on your system:
 
-## Technologies Used
+- Docker
+- Node.js (for local development)
 
-- **Frontend**:
-  - React: A JavaScript library for building user interfaces.
-  - Axios: For making HTTP requests to the backend.
-  
-- **Backend**:
-  - Node.js: A JavaScript runtime for server-side applications.
-  - Express: A web application framework for Node.js.
-  - MySQL: A relational database management system for storing product data.
+## Setup Instructions
 
-## Getting Started
-
-To get a local copy of the application up and running, follow these steps:
-
-### Prerequisites
-
-- **Node.js** (v14 or later)
-- **npm** (Node package manager)
-- **MySQL** (for the database)
-
-### Installation
-
-1. **Clone the Repository**
-
-   Open your terminal and run the following command:
+1. Clone the repository:
 
    ```bash
    git clone https://github.com/Lucyalfred769/simple-ecommerce-app.git
+
 2. **Navigate to the Project Directory**
    Change to the project directory:
 
@@ -68,15 +43,14 @@ To get a local copy of the application up and running, follow these steps:
    npm install
 
 ## Usage
-### Start the Backend Server
-
+### Start the Backend server
 From the backend directory, run:
 
 ```bash
 node server.js
 ```
 
-The backend will start running on port 3001.
+The backend will start running on port 7241.
 
 ### Start the Frontend Application
 
@@ -92,6 +66,25 @@ The frontend will open in your default web browser at [http://localhost:3000](ht
 ### View the Application
 
 Open your browser and go to [http://localhost:3000](http://localhost:3000) to view the Simple E-Commerce App. You should be able to see the list of kitchenware products displayed.
+
+## Running the Application with Docker
+
+The project contains a `docker-compose.yml` file to simplify running the backend and frontend using Docker. The `docker-compose.yml` file is used to orchestrate the frontend and backend containers.
+
+### Build and start the containers:
+
+```bash
+docker-compose up --build
+```
+
+### Access the application
+- Backend: [http://localhost:7241](http://localhost:7241)
+- Frontend: [http://localhost:3000](http://localhost:3000)
+
+## Future Improvements
+- Integrating a real database for product data.
+- Adding more features to the shopping cart (e.g., product quantity, removing items).
+- Handling backend errors more gracefully on the frontend.
 
 ## Contributing
 
@@ -118,5 +111,3 @@ Contributions are welcome! If you have suggestions for improvements or features,
    ```
 
 5. Open a Pull Request.
-
-  
