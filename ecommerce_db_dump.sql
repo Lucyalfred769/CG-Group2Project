@@ -31,7 +31,7 @@ COPY public.products (id, name, price, image) FROM stdin;
 2	Stainless Steel Spoon	3.49	/images/spoon.jpg
 3	Non-Stick Cooking Pot	29.99	/images/pot.jpg
 4	Microwave Oven	89.99	/images/microwave.jpg
-\.  -- End of data
+\.
 
 -- Grant permissions
 GRANT ALL ON TABLE public.products TO lucy;
