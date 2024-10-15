@@ -1,5 +1,5 @@
 # Use Node.js image
-FROM node:16
+FROM node:20-alpine AS build
 
 # Set working directory
 WORKDIR /app
@@ -14,8 +14,11 @@ COPY . .
 # Build the frontend app
 RUN npm run build
 
-# Expose the frontend port
-EXPOSE 3000
+# Use Nginx to serve the static build files
+FROM nginx:alpine
+COPY --from=build /app/build /usr/share/nginx/html
 
-# Command to serve the app
-CMD ["npx", "serve", "-s", "build"]
+EXPOSE 80
+
+# Start nginx server
+CMD ["nginx", "-g", "daemon off;"]

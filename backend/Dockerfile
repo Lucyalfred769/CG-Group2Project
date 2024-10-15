@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 7241
 
 # Command to run the app
-CMD ["node", "server.js"]
+CMD ["npm", "start"]

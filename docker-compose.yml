@@ -1,16 +1,34 @@
-version: '3.8'
-
 services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres
+    env_file:
+      - ./backend/.env  
+    ports:
+      - "5432:5432"
+    # volumes:
+    #   - pgdata:/var/lib/postgresql/data
+    volumes:
+      - ./ecommerce_db_dump.sql:/docker-entrypoint-initdb.d/ecommerce_db_dump.sql
+  
   backend:
     build: ./backend
+    container_name: backend
+    env_file:
+      - ./backend/.env
     ports:
       - "7241:7241"
-    environment:
-      - DATABASE_URL=mysql://group2project:JustD2OfUs@localhost/kitchenware_store
+    depends_on:
+      - postgres
 
   frontend:
     build: ./frontend
+    container_name: frontend
+    env_file:
+      - ./frontend/.env
     ports:
-      - "3000:3000"
-    environment:
-      - REACT_APP_API_URL=http://localhost:3001
+      - "80:80"
+
+volumes:
+  pgdata:
+    driver: local
