@@ -1,26 +1,33 @@
+require('dotenv').config(); // Load environment variables from .env
 const express = require('express');
 const cors = require('cors');
+const { Pool } = require('pg'); // PostgreSQL client
 const app = express();
-const port = 7241;
+const port = process.env.PORT || 3000;
 
-// Enable CORS to allow requests from different origins (like React frontend)
 app.use(cors());
 
-// Sample product data
-const products = [
-    { id: 1, name: 'Ceramic Mug', price: 12.99, image: '/images/mug.jpg' },
-    { id: 2, name: 'Stainless Steel Spoon', price: 3.49, image: '/images/spoon.jpg' },
-    { id: 3, name: 'Non-Stick Cooking Pot', price: 29.99, image: '/images/pot.jpg' },
-    { id: 4, name: 'Microwave Oven', price: 89.99, image: '/images/microwave.jpg' }
-];
+// Create a new pool instance for PostgreSQL connection
+const pool = new Pool({
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
+});
 
-// Route to fetch products
-app.get('/api/products', (req, res) => {
-    res.json(products);
+// Route to fetch products from the database
+app.get('/api/products', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT * FROM products');
+        res.json(result.rows); // Send the fetched products to the frontend
+    } catch (err) {
+        console.error('Error fetching products:', err);
+        res.status(500).json({ error: 'Database query failed' });
+    }
 });
 
 // Start server
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
-
