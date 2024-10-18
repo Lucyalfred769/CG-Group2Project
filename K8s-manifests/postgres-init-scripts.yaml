@@ -33,10 +33,10 @@ data:
 
     -- Data for the products table
     COPY public.products (id, name, price, image) FROM stdin;
-    1	Ceramic Mug	12.99	/images/mug.jpg
-    2	Stainless Steel Spoon	3.49	/images/spoon.jpg
-    3	Non-Stick Cooking Pot	29.99	/images/pot.jpg
-    4	Microwave Oven	89.99	/images/microwave.jpg
+    1   Ceramic Mug     12.99   /images/mug.jpg
+    2   Stainless Steel Spoon   3.49    /images/spoon.jpg
+    3   Non-Stick Cooking Pot   29.99   /images/pot.jpg
+    4   Microwave Oven  89.99   /images/microwave.jpg
     \.
 
     -- Grant permissions

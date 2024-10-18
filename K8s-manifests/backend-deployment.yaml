@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: lucci7/cg2ecommerce-backend:v1.1
+        ports:
+        - containerPort: 7241
+        env:
+        - name: DB_HOST
+          value: "postgres-service"
+        - name: DB_PORT
+          value: "5432"
+        - name: DB_USER
+          value: "lucy"
+        - name: DB_PASSWORD
+          value: "lucy_pass-word"
+        - name: DB_NAME
+          value: "ecommerce"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  selector:
+    app: backend
+  ports:
+    - port: 7241
+      targetPort: 7241
+  type: NodePort
